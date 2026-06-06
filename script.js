@@ -12,7 +12,7 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
       });
     },
     {
-      threshold: 0.2,
+      threshold: 0.05,
     }
   );
 
