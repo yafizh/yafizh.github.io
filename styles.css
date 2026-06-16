@@ -44,7 +44,8 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-img {
+img,
+video {
   max-width: 100%;
   border-radius: var(--radius);
 }
@@ -167,6 +168,7 @@ main {
 
 section {
   position: relative;
+  scroll-margin-top: 120px;
 }
 
 .eyebrow {
@@ -333,6 +335,11 @@ section {
   gap: 24px;
 }
 
+.projects__grid--featured {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
 .project-card {
   background: var(--bg-alt);
   border-radius: var(--radius);
@@ -346,7 +353,76 @@ section {
   height: 100%;
 }
 
+.project-card--featured {
+  padding-top: 0;
+}
+
+.project-card__media-link {
+  display: block;
+  margin: 0 -28px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-card__media {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.project-card__media img,
+.project-card__media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.35s ease;
+}
+
+.project-card--featured:hover .project-card__media img,
+.project-card--featured:hover .project-card__media video,
+.project-card--featured:focus-within .project-card__media img,
+.project-card--featured:focus-within .project-card__media video,
+.project-card__media-link:focus-visible .project-card__media img,
+.project-card__media-link:focus-visible .project-card__media video {
+  transform: scale(1.03);
+}
+
+.project-card__media-overlay {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project-card--featured:hover .project-card__media-overlay,
+.project-card--featured:focus-within .project-card__media-overlay,
+.project-card__media-link:focus-visible .project-card__media-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .project-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.project-card:not(.project-card--featured) p {
   margin-bottom: 24px;
 }
 
@@ -374,21 +450,42 @@ section {
   background: var(--bg);
 }
 
-.tags {
+.project-card__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.tech-stack {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
   color: var(--muted);
   font-size: 0.85rem;
 }
 
-.tags li {
-  padding: 4px 10px;
+.tech-stack li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--bg);
+}
+
+.tech-stack img {
+  width: 22px;
+  height: 22px;
+  border-radius: 0;
+  flex: 0 0 auto;
 }
 
 .project-card__actions {
@@ -507,14 +604,49 @@ section {
 }
 
 @media (max-width: 768px) {
+  section {
+    scroll-margin-top: 96px;
+  }
+
+  .site-header {
+    padding: 12px 0;
+  }
+
   .site-header .container {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 12px;
+    width: min(100% - 24px, 1200px);
+  }
+
+  .logo {
+    flex: 0 0 auto;
   }
 
   .site-nav {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 4px 0;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    font-size: 0.88rem;
+    flex: 0 0 auto;
+  }
+
+  .projects__grid--featured {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__media-link {
+    margin-bottom: 20px;
   }
 
   .timeline__items {
@@ -529,6 +661,14 @@ section {
   .contact__card {
     flex-direction: column;
     text-align: center;
+  }
+
+  .contact__actions {
+    width: 100%;
+  }
+
+  .contact__actions .button {
+    width: 100%;
   }
 }
 
