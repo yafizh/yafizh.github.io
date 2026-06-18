@@ -384,6 +384,42 @@ const featureProjects = {
       ['assets/buku-tamu-bps-features/guest-07-change-password.png', 'Guest change password'],
     ],
   },
+
+  'buku-tamu-perpustakaan-bptp': {
+    title: 'Buku Tamu Perpustakaan BPTP KALSEL',
+    description: 'Digital library visitor book for BPTP KALSEL, covering visitor intake, profession-specific fields, searchable visit history, visitor detail lookup, and export timestamp tracking.',
+    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
+    features: [
+      {
+        label: 'Visitor Intake',
+        items: [
+          'Landing page with direct access to the guest form and visit history',
+          'Guest identity form with visit date and live visit time',
+          'Profession-specific fields for public visitors, students, and BPTP employees',
+          'Topic selection and visit-purpose notes with form validation and notification feedback',
+        ],
+      },
+      {
+        label: 'Visit History',
+        items: [
+          'Visitor history table with profession, topic, and visit date information',
+          'Search by visitor name, date range, profession, and topic',
+          'Visitor detail modal including university or division data when available',
+          'Excel export action with last-download timestamp tracking',
+        ],
+      },
+    ],
+    images: [
+      ['assets/buku-tamu-perpustakaan-bptp-features/01-home.png', 'Landing page'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/02-visitor-form-public.png', 'Visitor form for public visitors'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/03-visitor-form-student.png', 'Visitor form with student fields'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/04-visitor-form-employee.png', 'Visitor form with BPTP employee fields'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/05-history-list.png', 'Visit history list'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/06-history-search-filter.png', 'Visit history search and filters'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/07-visitor-detail-modal.png', 'Visitor detail modal'],
+      ['assets/buku-tamu-perpustakaan-bptp-features/08-history-export-status.png', 'Export controls and backup timestamp'],
+    ],
+  },
   'zamrud-jewellery': {
     title: 'The Zamrud Jewellery Warehouse',
     description: 'Warehouse and retail operations system for jewellery inventory, supplier intake, store distribution, exhibition sales, store sales, returns, and operational reporting.',
