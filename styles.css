@@ -5,10 +5,9 @@
   --text: #0f172a;
   --muted: #475569;
   --accent: #2563eb;
-  --accent-soft: rgba(37, 99, 235, 0.12);
   --border: #e2e8f0;
-  --radius: 18px;
-  --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  --radius: 12px;
+  --shadow: 0 16px 34px rgba(15, 23, 42, 0.07);
   --font-heading: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -25,8 +24,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.08), transparent 45%),
-    radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.08), transparent 45%), var(--bg);
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg) 320px);
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
@@ -59,27 +57,27 @@ video {
   position: fixed;
   inset: 0;
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Crect width="200" height="200" fill="rgba(15,23,42,0.03)"/%3E%3C/svg%3E');
-  opacity: 0.4;
+  opacity: 0.32;
   pointer-events: none;
 }
 
 .bg-gradient {
   position: fixed;
-  width: 420px;
-  height: 420px;
-  filter: blur(120px);
-  opacity: 0.55;
+  width: 360px;
+  height: 360px;
+  filter: blur(130px);
+  opacity: 0.34;
   pointer-events: none;
 }
 
 .bg-gradient--one {
-  background: rgba(148, 163, 184, 0.6);
+  background: rgba(37, 99, 235, 0.32);
   top: 10%;
   left: 5%;
 }
 
 .bg-gradient--two {
-  background: rgba(37, 99, 235, 0.35);
+  background: rgba(14, 165, 233, 0.18);
   bottom: 5%;
   right: 10%;
 }
@@ -89,7 +87,7 @@ video {
   top: 0;
   z-index: 5;
   backdrop-filter: blur(18px);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid var(--border);
   padding: 18px 0;
 }
@@ -106,7 +104,7 @@ video {
   letter-spacing: 2px;
   padding: 6px 10px;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 10px;
 }
 
 .site-nav {
@@ -260,7 +258,7 @@ section {
 }
 
 .card {
-  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
   border-radius: var(--radius);
   padding: 28px;
   border: 1px solid var(--border);
@@ -270,8 +268,8 @@ section {
 
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 25px 55px rgba(15, 23, 42, 0.12);
-  transform: translateY(-6px);
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.1);
+  transform: translateY(-4px);
 }
 
 .card span,
@@ -351,6 +349,12 @@ section {
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.1);
 }
 
 .project-card--featured {
@@ -919,23 +923,10 @@ body.is-feature-modal-open {
   margin-bottom: 0;
 }
 
-.project-card::after {
-  /* content: ''; */
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, var(--accent-soft), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover::after {
-  opacity: 1;
-}
-
 .project-card__badge {
   display: inline-flex;
   padding: 6px 12px;
-  border-radius: 999px;
+  border-radius: 9px;
   border: 1px solid var(--border);
   font-size: 0.8rem;
   color: var(--muted);
@@ -969,7 +960,7 @@ body.is-feature-modal-open {
   align-items: center;
   gap: 8px;
   padding: 7px 11px;
-  border-radius: 999px;
+  border-radius: 9px;
   border: 1px solid var(--border);
   background: var(--bg);
 }
@@ -1019,9 +1010,9 @@ body.is-feature-modal-open {
   justify-content: space-between;
   gap: 32px;
   align-items: center;
-  background: linear-gradient(120deg, #ffffff 0%, #f1f5ff 100%);
+  background: linear-gradient(120deg, #ffffff 0%, #f8fafc 100%);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--radius);
   padding: 40px;
   box-shadow: var(--shadow);
 }
