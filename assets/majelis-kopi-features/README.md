@@ -1,0 +1,78 @@
+# Majelis Kopi Preview Screenshots
+
+These screenshots were captured from `http://localhost:8002` for the portfolio Other Work preview.
+
+- `login-01-login-page.png` - Login page
+- `admin-01-dashboard.png` - Admin dashboard
+- `admin-02-admin-users.png` - Admin user list
+- `admin-03-add-admin.png` - Add admin form
+- `admin-04-edit-admin.png` - Edit admin form
+- `admin-05-cashier-users.png` - Cashier user list
+- `admin-06-add-cashier.png` - Add cashier form
+- `admin-07-cashier-detail.png` - Cashier detail
+- `admin-08-edit-cashier.png` - Edit cashier form
+- `admin-09-assets.png` - Asset list
+- `admin-10-add-asset.png` - Add asset form
+- `admin-11-asset-detail.png` - Asset detail
+- `admin-12-edit-asset.png` - Edit asset form
+- `admin-13-add-asset-addition.png` - Add asset addition form
+- `admin-14-asset-additions.png` - Asset addition history
+- `admin-15-edit-asset-addition.png` - Edit asset addition form
+- `admin-16-add-asset-reduction.png` - Add asset reduction form
+- `admin-17-asset-reductions.png` - Asset reduction history
+- `admin-18-edit-asset-reduction.png` - Edit asset reduction form
+- `admin-19-menu-categories.png` - Menu category list
+- `admin-20-add-menu-category.png` - Add menu category form
+- `admin-21-edit-menu-category.png` - Edit menu category form
+- `admin-22-attendance.png` - Cashier attendance summary
+- `admin-23-attendance-detail.png` - Cashier attendance detail
+- `admin-24-add-attendance.png` - Add attendance form
+- `admin-25-edit-attendance.png` - Edit attendance form
+- `admin-26-payroll.png` - Payroll summary
+- `admin-27-payroll-detail.png` - Payroll detail
+- `admin-28-raw-materials.png` - Raw material list
+- `admin-29-add-raw-material.png` - Add raw material form
+- `admin-30-edit-raw-material.png` - Edit raw material form
+- `admin-31-raw-stock.png` - Raw material stock
+- `admin-32-suppliers.png` - Supplier list
+- `admin-33-add-supplier.png` - Add supplier form
+- `admin-34-edit-supplier.png` - Edit supplier form
+- `admin-35-add-supply.png` - Add supply form
+- `admin-36-supplies.png` - Supply history
+- `admin-37-edit-supply.png` - Edit supply form
+- `admin-38-menu-category-browser.png` - Menu category browser
+- `admin-39-menu-by-category.png` - Menu by category
+- `admin-40-add-menu.png` - Add menu form
+- `admin-41-edit-menu.png` - Edit menu form
+- `admin-42-favorite-menu.png` - Favorite menu list
+- `admin-43-sales-history.png` - Sales history
+- `admin-44-sales-detail.png` - Sales detail
+- `admin-45-customers.png` - Customer list
+- `admin-46-customer-detail.png` - Customer detail
+- `admin-47-add-customer.png` - Add customer form
+- `admin-48-edit-customer.png` - Edit customer form
+- `admin-49-report-cashier.png` - Cashier report
+- `admin-50-report-menu.png` - Menu report
+- `admin-51-report-favorite-menu.png` - Favorite menu report
+- `admin-52-report-favorite-chart.png` - Favorite menu chart report
+- `admin-53-report-sales.png` - Sales report
+- `admin-54-report-suppliers.png` - Supplier report
+- `admin-55-report-supplies.png` - Raw material supply report
+- `admin-56-report-finance.png` - Finance report
+- `admin-57-report-asset-additions.png` - Asset addition report
+- `admin-58-report-asset-reductions.png` - Asset reduction report
+- `admin-59-change-password.png` - Admin change password
+- `cashier-01-pos.png` - Cashier POS
+- `cashier-02-pos-with-order.png` - Cashier POS with order draft
+- `cashier-03-sales-history.png` - Cashier sales history
+- `cashier-04-sales-detail.png` - Cashier sales detail
+- `cashier-05-stock.png` - Cashier raw stock
+- `cashier-06-customers.png` - Cashier customer list
+- `cashier-07-customer-detail.png` - Cashier customer detail
+- `cashier-08-add-customer.png` - Cashier add customer form
+- `cashier-09-edit-customer.png` - Cashier edit customer form
+- `cashier-10-cash.png` - Cashier cash register
+- `cashier-11-change-password.png` - Cashier change password
+- `customer-01-pos.png` - Customer POS view
+- `customer-02-sales-history.png` - Customer sales history
+- `customer-03-customers.png` - Customer customer management
