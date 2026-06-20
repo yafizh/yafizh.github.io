@@ -766,18 +766,6 @@ body.is-feature-modal-open {
 
 .feature-modal__description {
   color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.feature-modal__availability {
-  display: inline-flex;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 700;
   margin-bottom: 24px;
 }
 
@@ -1238,10 +1226,6 @@ body.is-feature-modal-open {
     padding: 28px 20px;
     border-right: 0;
     border-bottom: 1px solid var(--border);
-  }
-
-  .feature-modal__availability {
-    border-radius: 12px;
   }
 
   .feature-modal__gallery {

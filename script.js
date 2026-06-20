@@ -36,7 +36,6 @@ const featureProjects = {
   'office-asset': {
     title: 'Office Asset & Inventory Management System (BPTP KALSEL)',
     description: 'End-to-end internal asset tracking for BPTP KALSEL, covering asset data, condition reports, maintenance, borrowing, returns, and employee self-service flows.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -100,7 +99,6 @@ const featureProjects = {
   'school-management': {
     title: 'Digital School Management & Grading System',
     description: 'Multi-role school operations system covering classroom activity, digital books, assignments, attendance, grading, reporting, and student progress workflows.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -168,7 +166,6 @@ const featureProjects = {
   'kostel-reservation': {
     title: 'Kostel Reservation & Operations Platform',
     description: 'Boarding house reservation and operations system covering room inventory, reservations, check-ins, check-outs, employee service workflows, receipts, and operational reporting.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -227,7 +224,6 @@ const featureProjects = {
   'buku-tamu': {
     title: 'Digital Guest Book & Visitor Management System (DARPUSDA Banjarbaru)',
     description: 'Visitor management system for DARPUSDA Banjarbaru covering guest check-in/out, visitor records, room and bookshelf master data, staff schedules, events, agendas, school visit requests, documents, and reports.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -306,7 +302,6 @@ const featureProjects = {
   'buku-tamu-bps': {
     title: 'Buku Tamu BPS HSU',
     description: 'Guest book and appointment management system for BPS Hulu Sungai Utara covering walk-in visits, guest accounts, online appointment requests, employee and division master data, reports, and IKM satisfaction scoring.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -388,7 +383,6 @@ const featureProjects = {
   'buku-tamu-perpustakaan-bptp': {
     title: 'Buku Tamu Perpustakaan BPTP KALSEL',
     description: 'Digital library visitor book for BPTP KALSEL, covering visitor intake, profession-specific fields, searchable visit history, visitor detail lookup, and export timestamp tracking.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Visitor Intake',
@@ -423,7 +417,6 @@ const featureProjects = {
   'majelis-kopi': {
     title: 'Majelis Kopi Sales & Inventory Management System',
     description: 'Coffee shop operations system for Majelis Kopi covering POS transactions, menu and raw-material inventory, suppliers, cashier attendance and payroll, asset tracking, customer management, and operational reports.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -531,7 +524,6 @@ const featureProjects = {
   'zamrud-jewellery': {
     title: 'The Zamrud Jewellery Warehouse',
     description: 'Warehouse and retail operations system for jewellery inventory, supplier intake, store distribution, exhibition sales, store sales, returns, and operational reporting.',
-    availability: 'Live demo is not publicly hosted yet. Feature screenshots are available below.',
     features: [
       {
         label: 'Admin',
@@ -973,7 +965,6 @@ function initFeatureModal() {
             <p class="feature-modal__eyebrow">Screenshot preview</p>
             <h2 id="feature-modal-title"></h2>
             <p class="feature-modal__description"></p>
-            <p class="feature-modal__availability"></p>
             <div class="feature-modal__features"></div>
           </section>
           <section class="feature-modal__gallery" aria-label="Project screenshots">
@@ -1013,7 +1004,6 @@ function initFeatureModal() {
   const panel = modal.querySelector('.feature-modal__panel');
   const title = modal.querySelector('#feature-modal-title');
   const description = modal.querySelector('.feature-modal__description');
-  const availability = modal.querySelector('.feature-modal__availability');
   const featureList = modal.querySelector('.feature-modal__features');
   const activeImage = modal.querySelector('.feature-modal__active-image');
   const imageButton = modal.querySelector('.feature-modal__image-button');
@@ -1111,7 +1101,6 @@ function initFeatureModal() {
     featureModalState.shouldRestoreFocus = shouldRestoreFocus;
     title.textContent = project.title;
     description.textContent = project.description;
-    availability.textContent = project.availability;
     featureList.replaceChildren();
     filters.replaceChildren();
     thumbs.replaceChildren();
