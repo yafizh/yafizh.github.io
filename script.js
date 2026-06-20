@@ -646,8 +646,54 @@ const featureProjects = {
 const featureModalState = {
   project: null,
   selectedImage: 0,
+  activeGroup: 'All',
   lastFocusedElement: null,
   shouldRestoreFocus: false,
+};
+
+const featureImageGroupOrder = [
+  'All',
+  'Admin',
+  'Employee',
+  'Staff',
+  'Teacher',
+  'Student',
+  'Warehouse',
+  'Store',
+  'Cashier',
+  'School',
+  'Guest',
+  'Public',
+  'Access',
+  'Reports',
+  'Other',
+];
+
+const getFeatureImageGroup = (src, alt) => {
+  const filename = src.split('/').pop() || '';
+  const prefix = filename.split('-')[0];
+  const searchable = `${src} ${alt}`.toLowerCase();
+
+  if (/\b(report|reports|chart|analytics)\b/.test(searchable)) {
+    return 'Reports';
+  }
+
+  const prefixGroups = {
+    admin: 'Admin',
+    employee: 'Employee',
+    petugas: 'Staff',
+    teacher: 'Teacher',
+    student: 'Student',
+    warehouse: 'Warehouse',
+    store: 'Store',
+    cashier: 'Cashier',
+    school: 'School',
+    guest: 'Guest',
+    public: 'Public',
+    login: 'Access',
+  };
+
+  return prefixGroups[prefix] || 'Other';
 };
 
 function initPreviewGalleries() {
@@ -955,6 +1001,7 @@ function initFeatureModal() {
               </div>
               <figcaption class="feature-modal__caption"></figcaption>
             </figure>
+            <div class="feature-modal__filters" aria-label="Filter screenshots"></div>
             <div class="feature-modal__thumbs" aria-label="Screenshot thumbnails"></div>
           </section>
         </div>
@@ -973,10 +1020,27 @@ function initFeatureModal() {
   const previousButton = modal.querySelector('.feature-modal__step--previous');
   const nextButton = modal.querySelector('.feature-modal__step--next');
   const caption = modal.querySelector('.feature-modal__caption');
+  const filters = modal.querySelector('.feature-modal__filters');
   const thumbs = modal.querySelector('.feature-modal__thumbs');
   const closeButton = modal.querySelector('.feature-modal__close');
 
   const getModalImages = () => Array.from(thumbs.querySelectorAll('img'));
+  const getVisibleImageIndexes = () => Array.from(thumbs.querySelectorAll('button:not([hidden])'))
+    .map((button) => Number(button.dataset.imageIndex));
+
+  const updateFeatureFilters = () => {
+    filters.querySelectorAll('button').forEach((button) => {
+      const isSelected = button.dataset.group === featureModalState.activeGroup;
+      button.classList.toggle('is-selected', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+    });
+
+    thumbs.querySelectorAll('button').forEach((button) => {
+      const shouldShow = featureModalState.activeGroup === 'All'
+        || button.dataset.group === featureModalState.activeGroup;
+      button.hidden = !shouldShow;
+    });
+  };
 
   const setFeatureImage = (index) => {
     const project = featureModalState.project;
@@ -995,6 +1059,33 @@ function initFeatureModal() {
       button.classList.toggle('is-selected', isSelected);
       button.setAttribute('aria-current', String(isSelected));
     });
+  };
+
+  const stepFeatureImage = (direction) => {
+    const visibleIndexes = getVisibleImageIndexes();
+    if (!visibleIndexes.length) {
+      return;
+    }
+
+    const currentVisibleIndex = visibleIndexes.indexOf(featureModalState.selectedImage);
+    const fallbackIndex = direction > 0 ? 0 : visibleIndexes.length - 1;
+    const nextVisibleIndex = currentVisibleIndex >= 0
+      ? (currentVisibleIndex + direction + visibleIndexes.length) % visibleIndexes.length
+      : fallbackIndex;
+
+    setFeatureImage(visibleIndexes[nextVisibleIndex]);
+  };
+
+  const setFeatureGroup = (group) => {
+    featureModalState.activeGroup = group;
+    updateFeatureFilters();
+
+    const visibleIndexes = getVisibleImageIndexes();
+    if (visibleIndexes.length && !visibleIndexes.includes(featureModalState.selectedImage)) {
+      setFeatureImage(visibleIndexes[0]);
+    } else {
+      setFeatureImage(featureModalState.selectedImage);
+    }
   };
 
   const closeFeatureModal = () => {
@@ -1022,7 +1113,9 @@ function initFeatureModal() {
     description.textContent = project.description;
     availability.textContent = project.availability;
     featureList.replaceChildren();
+    filters.replaceChildren();
     thumbs.replaceChildren();
+    featureModalState.activeGroup = 'All';
 
     project.features.forEach((group) => {
       const groupEl = document.createElement('div');
@@ -1041,22 +1134,48 @@ function initFeatureModal() {
       featureList.append(groupEl);
     });
 
+    const imageGroups = project.images.map(([src, alt]) => getFeatureImageGroup(src, alt));
+    const availableGroups = Array.from(new Set(['All', ...imageGroups])).sort((groupA, groupB) => {
+      const indexA = featureImageGroupOrder.indexOf(groupA);
+      const indexB = featureImageGroupOrder.indexOf(groupB);
+      return (indexA === -1 ? featureImageGroupOrder.length : indexA)
+        - (indexB === -1 ? featureImageGroupOrder.length : indexB);
+    });
+
+    availableGroups.forEach((group) => {
+      const button = document.createElement('button');
+      button.className = 'feature-modal__filter';
+      button.type = 'button';
+      button.dataset.group = group;
+      button.setAttribute('aria-pressed', String(group === featureModalState.activeGroup));
+      button.textContent = group;
+      button.addEventListener('click', () => setFeatureGroup(group));
+      filters.append(button);
+    });
+
     project.images.forEach(([src, alt], imageIndex) => {
       const button = document.createElement('button');
       const image = document.createElement('img');
+      const label = document.createElement('span');
+      const group = imageGroups[imageIndex];
 
       button.className = 'feature-modal__thumb';
       button.type = 'button';
+      button.dataset.group = group;
+      button.dataset.imageIndex = String(imageIndex);
       button.setAttribute('aria-label', `Show ${alt}`);
       image.src = src;
       image.alt = alt;
       image.loading = 'lazy';
+      label.className = 'feature-modal__thumb-label';
+      label.textContent = alt;
 
-      button.append(image);
+      button.append(image, label);
       button.addEventListener('click', () => setFeatureImage(imageIndex));
       thumbs.append(button);
     });
 
+    updateFeatureFilters();
     setFeatureImage(0);
     modal.hidden = false;
     document.body.classList.add('is-feature-modal-open');
@@ -1079,10 +1198,10 @@ function initFeatureModal() {
       }
     });
     previousButton.addEventListener('click', () => {
-      setFeatureImage(featureModalState.selectedImage - 1);
+      stepFeatureImage(-1);
     });
     nextButton.addEventListener('click', () => {
-      setFeatureImage(featureModalState.selectedImage + 1);
+      stepFeatureImage(1);
     });
 
     window.addEventListener('keydown', (event) => {
@@ -1099,11 +1218,11 @@ function initFeatureModal() {
       }
 
       if (event.key === 'ArrowLeft') {
-        setFeatureImage(featureModalState.selectedImage - 1);
+        stepFeatureImage(-1);
       }
 
       if (event.key === 'ArrowRight') {
-        setFeatureImage(featureModalState.selectedImage + 1);
+        stepFeatureImage(1);
       }
     }, true);
 
