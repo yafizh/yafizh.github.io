@@ -1,0 +1,50 @@
+# Surat Masuk & Surat Keluar Preview Screenshots
+
+These screenshots were captured from `http://localhost:8002` for the portfolio Other Work preview.
+
+- `login-01-login-page.png` - Login page
+- `admin-01-dashboard.png` - Admin dashboard
+- `admin-02-letter-codes.png` - Letter code list
+- `admin-03-add-letter-code.png` - Add letter code form
+- `admin-04-edit-letter-code.png` - Edit letter code form
+- `admin-05-rooms.png` - Room list
+- `admin-06-add-room.png` - Add room form
+- `admin-07-edit-room.png` - Edit room form
+- `admin-08-users.png` - User list
+- `admin-09-add-user.png` - Add user form
+- `admin-10-edit-user.png` - Edit user form
+- `admin-11-agenda.png` - Agenda list
+- `admin-12-inventory.png` - Inventory list
+- `admin-13-add-inventory.png` - Add inventory form
+- `admin-14-edit-inventory.png` - Edit inventory form
+- `admin-15-inventory-loans.png` - Inventory loan list
+- `admin-16-loan-detail.png` - Inventory loan detail
+- `admin-17-reports.png` - Report center
+- `admin-18-change-password.png` - Admin change password
+- `employee-01-dashboard.png` - Employee dashboard
+- `employee-02-outgoing-letters.png` - Outgoing letter list
+- `employee-03-add-outgoing-letter.png` - Add outgoing letter form
+- `employee-04-edit-outgoing-letter.png` - Edit outgoing letter form
+- `employee-05-incoming-letters.png` - Incoming letter list
+- `employee-06-add-incoming-letter.png` - Add incoming letter form
+- `employee-07-edit-incoming-letter.png` - Edit incoming letter form
+- `employee-08-dispositions.png` - Disposition letter list
+- `employee-09-add-disposition.png` - Add disposition form
+- `employee-10-edit-disposition.png` - Edit disposition form
+- `employee-11-agenda.png` - Employee agenda list
+- `employee-12-add-agenda.png` - Add agenda form
+- `employee-13-edit-agenda.png` - Edit agenda form
+- `employee-14-archives.png` - Archive list
+- `employee-15-add-archive.png` - Add archive form
+- `employee-16-edit-archive.png` - Edit archive form
+- `employee-17-inventory.png` - Employee inventory list
+- `employee-18-inventory-loans.png` - Employee inventory loan list
+- `employee-19-add-inventory-loan.png` - Add inventory loan form
+- `employee-20-edit-inventory-loan.png` - Edit inventory loan form
+- `employee-21-loan-detail.png` - Employee inventory loan detail
+- `employee-22-change-password.png` - Employee change password
+- `leader-01-dashboard.png` - Leader dashboard
+- `leader-02-dispositions.png` - Leader disposition list
+- `leader-03-edit-disposition.png` - Leader disposition detail/edit
+- `leader-04-reports.png` - Leader report center
+- `leader-05-change-password.png` - Leader change password
