@@ -190,7 +190,7 @@ video {
 }
 
 main {
-  padding: 96px 0 120px;
+  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
   gap: 96px;
