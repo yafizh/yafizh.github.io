@@ -986,6 +986,479 @@ const featureProjects = {
   },
 };
 
+const locale = document.documentElement.lang.toLowerCase().startsWith('id') ? 'id' : 'en';
+const isIndonesian = locale === 'id';
+
+const uiCopy = {
+  en: {
+    closeFeatureView: 'Close feature view',
+    closePreview: 'Close preview',
+    filterScreenshots: 'Filter screenshots',
+    nextFeatureScreenshot: 'Next feature screenshot',
+    nextPreview: 'Next preview',
+    openFullView: (altText) => `Open ${altText} full view`,
+    openSelectedScreenshot: 'Open selected screenshot full view',
+    previousFeatureScreenshot: 'Previous feature screenshot',
+    previousPreview: 'Previous preview',
+    projectFeatureSummary: 'Project feature summary',
+    projectPreviewImage: 'Project preview image',
+    screenshotPreview: 'Screenshot preview',
+    screenshotThumbnails: 'Screenshot thumbnails',
+    screenshots: 'Project screenshots',
+    showImage: (altText) => `Show ${altText}`,
+  },
+  id: {
+    closeFeatureView: 'Tutup tampilan fitur',
+    closePreview: 'Tutup pratinjau',
+    filterScreenshots: 'Filter screenshot',
+    nextFeatureScreenshot: 'Screenshot fitur berikutnya',
+    nextPreview: 'Pratinjau berikutnya',
+    openFullView: (altText) => `Buka ${altText} dalam tampilan penuh`,
+    openSelectedScreenshot: 'Buka screenshot terpilih dalam tampilan penuh',
+    previousFeatureScreenshot: 'Screenshot fitur sebelumnya',
+    previousPreview: 'Pratinjau sebelumnya',
+    projectFeatureSummary: 'Ringkasan fitur proyek',
+    projectPreviewImage: 'Gambar pratinjau proyek',
+    screenshotPreview: 'Pratinjau screenshot',
+    screenshotThumbnails: 'Thumbnail screenshot',
+    screenshots: 'Screenshot proyek',
+    showImage: (altText) => `Tampilkan ${altText}`,
+  },
+};
+
+const featureGroupLabels = {
+  en: {},
+  id: {
+    All: 'Semua',
+    Admin: 'Admin',
+    Employee: 'Pegawai',
+    Staff: 'Petugas',
+    Teacher: 'Guru',
+    Student: 'Siswa',
+    Warehouse: 'Gudang',
+    Store: 'Toko',
+    Cashier: 'Kasir',
+    School: 'Sekolah',
+    Guest: 'Tamu',
+    Public: 'Publik',
+    Access: 'Akses',
+    Reports: 'Laporan',
+    Other: 'Lainnya',
+  },
+};
+
+const copy = uiCopy[locale];
+
+const getFeatureGroupLabel = (group) => featureGroupLabels[locale][group] || group;
+
+const localizedFeatureProjects = {
+  id: {
+    'office-asset': {
+      title: 'Sistem Manajemen Aset & Inventaris Kantor (BPTP KALSEL)',
+      description: 'Sistem pelacakan aset internal end-to-end untuk BPTP KALSEL, mencakup data aset, laporan kondisi, maintenance, peminjaman, pengembalian, dan alur self-service pegawai.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Manajemen akun pegawai dan pengguna',
+            'Manajemen jenis aset, kategori, inventaris, dan detail aset',
+            'Pelacakan penambahan aset, aset rusak, aset hilang, dan maintenance',
+            'Verifikasi permintaan peminjaman dan pengembalian',
+            'Laporan operasional untuk aset, penambahan, aset rusak/hilang, peminjaman, pengembalian, maintenance, kondisi, dan pegawai',
+          ],
+        },
+        {
+          label: 'Pegawai',
+          items: [
+            'Menelusuri jenis aset, kategori, dan aset yang tersedia',
+            'Mengajukan permintaan peminjaman aset',
+            'Melacak riwayat peminjaman dan detail permintaan',
+            'Mengajukan pengembalian dan meninjau riwayat pengembalian',
+          ],
+        },
+      ],
+    },
+    'school-management': {
+      title: 'Sistem Manajemen & Penilaian Sekolah Digital',
+      description: 'Sistem operasional sekolah multi-peran yang mencakup aktivitas kelas, buku digital, tugas, absensi, penilaian, laporan, dan workflow perkembangan siswa.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Manajemen dashboard, admin, kelas, semester, mata pelajaran, guru, dan siswa',
+            'Perpustakaan buku digital dan halaman detail buku',
+            'Manajemen siswa dan mata pelajaran pada kelas aktif',
+            'Input nilai dan layar laporan akademik',
+            'Laporan siswa, absensi guru, kelas aktif, dan grafik gender',
+          ],
+        },
+        {
+          label: 'Guru',
+          items: [
+            'Dashboard kelas dan perangkat mata pelajaran',
+            'Detail absensi dan input kehadiran',
+            'Penilaian tugas dan input nilai rapor',
+            'Ranking wali kelas dan akses buku digital',
+          ],
+        },
+        {
+          label: 'Siswa',
+          items: [
+            'Dashboard kelas',
+            'Catatan kehadiran',
+            'Forum diskusi',
+            'Tugas dan buku digital',
+          ],
+        },
+      ],
+    },
+    'kostel-reservation': {
+      title: 'Platform Reservasi & Operasional Kostel',
+      description: 'Sistem reservasi dan operasional kostel yang mencakup inventaris kamar, reservasi, check-in, check-out, workflow layanan pegawai, kuitansi, dan laporan operasional.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Manajemen akun admin dan pegawai',
+            'Manajemen tipe kamar, harga, fasilitas, dan inventaris kamar',
+            'Workflow reservasi, check-in, check-out, dan kuitansi',
+            'Laporan reservasi, check-in, check-out, kamar tersedia, pegawai, aktivitas layanan, grafik, dan keuangan',
+          ],
+        },
+        {
+          label: 'Pegawai',
+          items: [
+            'Daftar reservasi dan entri reservasi',
+            'Daftar check-in dan entri check-in walk-in',
+            'Riwayat check-out dan manajemen kata sandi',
+          ],
+        },
+      ],
+    },
+    'buku-tamu': {
+      title: 'Sistem Buku Tamu Digital & Manajemen Pengunjung (DARPUSDA Banjarbaru)',
+      description: 'Sistem manajemen pengunjung untuk DARPUSDA Banjarbaru yang mencakup check-in/out tamu, data pengunjung, master data ruangan dan rak buku, jadwal petugas, event, agenda, permintaan kunjungan sekolah, dokumen, dan laporan.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Dashboard statistik pengunjung dan tren kunjungan',
+            'Manajemen data tamu, akun pengguna, ruangan, rak buku, jadwal petugas, event, dan agenda',
+            'Alur persetujuan agenda untuk kunjungan sekolah, event, dan aktivitas internal',
+            'Generator laporan untuk tamu, kunjungan sekolah, event, agenda, ruangan, rak buku, tipe pengunjung, total kunjungan, dan aktivitas petugas',
+          ],
+        },
+        {
+          label: 'Petugas',
+          items: [
+            'Form check-in dan check-out tamu',
+            'Riwayat tamu, detail tamu, dan layar edit tamu',
+            'Manajemen agenda dan workflow pelacakan dokumen',
+          ],
+        },
+        {
+          label: 'Sekolah',
+          items: [
+            'Registrasi dan login akun sekolah',
+            'Daftar permintaan kunjungan untuk agenda sekolah yang diajukan',
+            'Form permintaan kunjungan sekolah dan manajemen kata sandi',
+          ],
+        },
+      ],
+    },
+    'buku-tamu-bps': {
+      title: 'Buku Tamu BPS HSU',
+      description: 'Sistem buku tamu dan manajemen janji untuk BPS Hulu Sungai Utara yang mencakup kunjungan langsung, akun tamu, permintaan janji online, master data pegawai dan divisi, laporan, serta penilaian kepuasan IKM.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Dashboard dengan counter pengunjung dan kunjungan terbaru',
+            'Manajemen data kunjungan tamu, detail permintaan online, divisi, pegawai, pengguna internal, dan pendaftar akun tamu',
+            'Generator laporan untuk kunjungan, permintaan kunjungan, pegawai, akun tamu, registrasi akun, IKM, grafik tipe kunjungan, grafik pengunjung, dan grafik IKM',
+            'Manajemen profil dan kata sandi',
+          ],
+        },
+        {
+          label: 'Petugas',
+          items: [
+            'Form buku tamu front-desk untuk kunjungan langsung',
+            'Pengelolaan data kunjungan tamu dan detail permintaan',
+            'Manajemen akun tamu dan penanganan permintaan lupa kata sandi',
+            'Manajemen profil dan kata sandi',
+          ],
+        },
+        {
+          label: 'Tamu',
+          items: [
+            'Dashboard tamu dan form permintaan kunjungan',
+            'Riwayat kunjungan pribadi, detail, dan layar edit permintaan',
+            'Manajemen profil dan perubahan kata sandi',
+            'Halaman publik penilaian kepuasan IKM setelah kunjungan selesai',
+          ],
+        },
+      ],
+    },
+    'buku-tamu-perpustakaan-bptp': {
+      title: 'Buku Tamu Perpustakaan BPTP KALSEL',
+      description: 'Buku tamu perpustakaan digital untuk BPTP KALSEL yang mencakup input pengunjung, field khusus profesi, riwayat kunjungan yang dapat dicari, pencarian detail pengunjung, dan pelacakan timestamp ekspor.',
+      features: [
+        {
+          label: 'Input Pengunjung',
+          items: [
+            'Landing page dengan akses langsung ke form tamu dan riwayat kunjungan',
+            'Form identitas tamu dengan tanggal kunjungan dan waktu kunjungan live',
+            'Field khusus profesi untuk pengunjung umum, mahasiswa, dan pegawai BPTP',
+            'Pilihan topik dan catatan tujuan kunjungan dengan validasi form dan notifikasi',
+          ],
+        },
+        {
+          label: 'Riwayat Kunjungan',
+          items: [
+            'Tabel riwayat pengunjung dengan informasi profesi, topik, dan tanggal kunjungan',
+            'Pencarian berdasarkan nama pengunjung, rentang tanggal, profesi, dan topik',
+            'Modal detail pengunjung termasuk data universitas atau divisi jika tersedia',
+            'Aksi ekspor Excel dengan pelacakan timestamp unduhan terakhir',
+          ],
+        },
+      ],
+    },
+    'cell-phone-store': {
+      title: 'Cell Phone Store',
+      description: 'Sistem operasional retail untuk mengelola inventaris aksesoris ponsel, deposit saldo, produk pulsa dan top-up, transaksi penjualan, pergerakan stok, serta master data staf/admin.',
+      availability: 'Demo live belum di-host secara publik. Screenshot fitur tersedia di bawah.',
+      features: [
+        {
+          label: 'Master Data',
+          items: [
+            'Manajemen admin, pegawai, dan tipe barang',
+            'Workflow modal tambah dan edit untuk data referensi',
+            'Tabel pencarian untuk data inti toko',
+          ],
+        },
+        {
+          label: 'Inventaris & Penjualan',
+          items: [
+            'Katalog barang yang dikelompokkan berdasarkan tipe dengan tampilan accordion',
+            'Modal stok masuk dan penjualan barang dari setiap baris barang',
+            'Riwayat transaksi barang masuk dan keluar',
+          ],
+        },
+        {
+          label: 'Produk Digital & Saldo',
+          items: [
+            'Ringkasan saldo saat ini dengan tabel produk pulsa dan top-up',
+            'Riwayat deposit saldo serta alur tambah/edit',
+            'Riwayat penjualan pulsa dan top-up dengan harga dan workflow edit',
+          ],
+        },
+      ],
+    },
+    'bank-kalsel-agunan': {
+      title: 'Sistem Manajemen Dokumen Agunan Bank Kalsel',
+      description: 'Sistem arsip dokumen agunan berbasis peran untuk Bank Kalsel yang mencakup data nasabah, data pegawai, slot penyimpanan kabinet, registrasi dokumen agunan, peminjaman dokumen, dan laporan operasional.',
+      availability: 'Demo live belum di-host secara publik. Screenshot fitur tersedia di bawah.',
+      features: [
+        {
+          label: 'Manajemen Arsip',
+          items: [
+            'Dashboard ringkasan untuk nasabah, kabinet, dokumen agunan, dan pegawai',
+            'Halaman master data nasabah dan pegawai dengan alur tambah, detail, dan edit saat data tersedia',
+            'Manajemen kabinet dan slot penyimpanan untuk lokasi fisik dokumen agunan',
+            'Form registrasi dokumen agunan dengan jenis kredit, jenis agunan, lokasi penyimpanan, status, tanggal, catatan, dan unggah file',
+          ],
+        },
+        {
+          label: 'Workflow Peminjaman',
+          items: [
+            'Daftar dokumen agunan dan daftar peminjaman untuk melacak pergerakan dokumen',
+            'Form pembuatan pinjaman untuk memilih dokumen, peminjam, tanggal pinjam, tanggal kembali, dan tujuan',
+            'Dashboard peran pegawai dan layar akses dokumen',
+          ],
+        },
+        {
+          label: 'Laporan',
+          items: [
+            'Laporan daftar agunan, status verifikasi, dan masa berlaku',
+            'Laporan peminjaman dan pengembalian, lokasi dokumen, dan ketersediaan penyimpanan',
+            'Laporan nasabah dan pegawai dengan alur cetak',
+            'Manajemen kata sandi untuk akun pengguna',
+          ],
+        },
+      ],
+    },
+    'ptsp-kemenag': {
+      title: 'Sistem Manajemen Layanan PTSP Kemenag',
+      description: 'Platform layanan terpadu satu pintu untuk Kemenag yang mencakup penerimaan permohonan publik, manajemen pegawai dan master data, pengajuan internal staf, verifikasi permohonan publik, dan laporan administratif.',
+      availability: 'Demo live belum di-host secara publik. Screenshot fitur tersedia di bawah.',
+      features: [
+        {
+          label: 'Layanan Publik',
+          items: [
+            'Landing page PTSP publik untuk memilih jenis permohonan layanan',
+            'Form permohonan online untuk magang/PKL, pengukuran kiblat, pendaftaran tempat ibadah, dan riset',
+            'Alur intake layanan yang dirancang untuk pemohon publik tanpa akses admin',
+          ],
+        },
+        {
+          label: 'Admin & Master Data',
+          items: [
+            'Dashboard admin dan area manajemen pegawai',
+            'Master data pangkat, golongan, jabatan, biaya perjalanan, tempat ibadah, jenis cuti, jenis transportasi, dan jenis izin',
+            'Form tambah dan edit untuk manajemen data referensi',
+            'Manajemen kata sandi admin',
+          ],
+        },
+        {
+          label: 'Pengajuan & Laporan',
+          items: [
+            'Antrean pengajuan internal untuk cuti, fasilitas, surat perjalanan dinas, dan izin',
+            'Antrean permohonan publik untuk registrasi tempat ibadah, riset, magang/PKL, dan pengukuran kiblat',
+            'Layar laporan dengan filter dan aksi cetak untuk pengajuan internal dan permohonan publik',
+          ],
+        },
+      ],
+    },
+    'kemenag-attendance-payroll': {
+      title: 'Sistem Absensi & Payroll Kemenag Tapin',
+      description: 'Sistem absensi dan payroll berbasis peran untuk Kemenag Tapin yang mencakup master data pegawai, pengaturan jabatan dan tunjangan, absensi berbasis QR, honor, laporan payroll, dan self-service pegawai.',
+      availability: 'Demo live belum di-host secara publik. Screenshot fitur tersedia di bawah.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Dashboard ringkasan untuk operasional pegawai, absensi, dan payroll',
+            'Modul manajemen jabatan, tunjangan, pegawai, dan honor',
+            'Layar tambah, edit, dan detail untuk administrasi pegawai',
+            'Manajemen kata sandi untuk akun administrator',
+          ],
+        },
+        {
+          label: 'Absensi & Payroll',
+          items: [
+            'Scanner absensi QR dan workflow entri riwayat absensi',
+            'Tampilan tabel absensi untuk pemantauan harian dan bulanan',
+            'Laporan pegawai, riwayat absensi, absensi bulanan, gaji, tunjangan, honor, dan kenaikan gaji',
+            'Alur laporan slip gaji untuk dokumentasi payroll pegawai individual',
+          ],
+        },
+        {
+          label: 'Pegawai',
+          items: [
+            'Dashboard pegawai untuk akses sesuai peran',
+            'Detail profil self-service dengan informasi identitas, pekerjaan, gaji, tunjangan, dan QR code',
+            'Manajemen kata sandi pegawai',
+          ],
+        },
+      ],
+    },
+    'surat-masuk-keluar': {
+      title: 'Sistem Manajemen Surat Masuk & Surat Keluar',
+      description: 'Sistem persuratan dan administrasi berbasis peran untuk mengelola surat masuk, surat keluar, disposisi, agenda, arsip, inventaris, peminjaman inventaris, dan laporan operasional.',
+      availability: 'Demo live belum di-host secara publik. Screenshot fitur tersedia di bawah.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Dashboard dengan ringkasan surat masuk/keluar dan tabel persuratan terbaru',
+            'Manajemen kode surat, ruangan, pengguna, agenda, inventaris, dan peminjaman inventaris',
+            'Form tambah dan edit untuk data referensi dan data inventaris',
+            'Pusat laporan dan manajemen kata sandi',
+          ],
+        },
+        {
+          label: 'Petugas',
+          items: [
+            'Manajemen surat masuk, surat keluar, dan disposisi',
+            'Pembuatan, daftar, dan edit agenda serta arsip',
+            'Penelusuran inventaris, permintaan pinjaman, edit pinjaman, dan peninjauan detail pinjaman',
+            'Manajemen kata sandi akun petugas',
+          ],
+        },
+        {
+          label: 'Pimpinan',
+          items: [
+            'Dashboard pimpinan dan layar peninjauan disposisi',
+            'Akses pusat laporan untuk pelaporan administratif',
+            'Manajemen kata sandi akun',
+          ],
+        },
+      ],
+    },
+    'majelis-kopi': {
+      title: 'Sistem Penjualan & Inventaris Majelis Kopi',
+      description: 'Sistem operasional coffee shop untuk Majelis Kopi yang mencakup transaksi POS, inventaris menu dan bahan baku, pemasok, absensi dan payroll kasir, pelacakan aset, manajemen pelanggan, dan laporan operasional.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Dashboard dengan ringkasan menu, kasir, pemasok, pelanggan, grafik tahunan, dan menu favorit',
+            'Manajemen akun admin dan kasir dengan profil kasir, absensi, payroll, dan layar kata sandi',
+            'Manajemen aset, kategori menu, item menu, bahan baku, stok, pemasok, dan supply',
+            'Laporan penjualan, pelanggan, menu favorit, keuangan, pemasok, supply, dan aset',
+          ],
+        },
+        {
+          label: 'Kasir',
+          items: [
+            'Layar POS dengan penelusuran menu berdasarkan kategori dan kontrol draft pesanan',
+            'Riwayat penjualan dan peninjauan detail penjualan',
+            'Visibilitas stok bahan baku dan manajemen pelanggan',
+            'Layar kas dan manajemen kata sandi',
+          ],
+        },
+        {
+          label: 'Pelanggan',
+          items: [
+            'Akses bergaya kasir untuk pelanggan yang disediakan dalam proyek',
+            'Tampilan POS, riwayat penjualan, dan manajemen pelanggan yang ditangkap terpisah',
+          ],
+        },
+      ],
+    },
+    'zamrud-jewellery': {
+      title: 'Gudang The Zamrud Jewellery',
+      description: 'Sistem operasional gudang dan retail untuk inventaris perhiasan, penerimaan pemasok, distribusi toko, penjualan pameran, penjualan toko, retur, dan laporan operasional.',
+      features: [
+        {
+          label: 'Admin',
+          items: [
+            'Manajemen akun admin, pegawai gudang, dan pegawai toko',
+            'Master data jenis pembayaran, jenis barang, inventaris barang, toko, dan pemasok',
+            'Workflow supply, distribusi, retur pemasok, pameran, penjualan pameran, dan penjualan toko',
+            'Laporan operasional untuk inventaris, distribusi, supply, retur, pameran, penjualan, dan keuangan',
+          ],
+        },
+        {
+          label: 'Pegawai Gudang',
+          items: [
+            'Penelusuran inventaris dan tampilan barang berdasarkan tipe',
+            'Manajemen distribusi toko, penerimaan pemasok, retur pemasok, dan pameran',
+            'Pencatatan penjualan pameran dan akses laporan',
+          ],
+        },
+        {
+          label: 'Pegawai Toko',
+          items: [
+            'Dashboard toko dan akses daftar barang',
+            'Daftar penjualan toko, form entri penjualan, dan halaman detail penjualan',
+            'Manajemen kata sandi akun',
+          ],
+        },
+      ],
+    },
+  },
+};
+
+if (isIndonesian) {
+  Object.entries(localizedFeatureProjects.id).forEach(([projectKey, localizedProject]) => {
+    featureProjects[projectKey] = {
+      ...featureProjects[projectKey],
+      ...localizedProject,
+    };
+  });
+}
+
 const featureModalState = {
   project: null,
   selectedImage: 0,
@@ -1063,7 +1536,7 @@ function initPreviewGalleries() {
 
     previousButton.className = 'preview-gallery__control';
     previousButton.type = 'button';
-    previousButton.setAttribute('aria-label', 'Previous preview');
+    previousButton.setAttribute('aria-label', copy.previousPreview);
     previousButton.innerHTML = `
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1074,7 +1547,7 @@ function initPreviewGalleries() {
 
     nextButton.className = 'preview-gallery__control';
     nextButton.type = 'button';
-    nextButton.setAttribute('aria-label', 'Next preview');
+    nextButton.setAttribute('aria-label', copy.nextPreview);
     nextButton.innerHTML = `
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1132,9 +1605,9 @@ function initPreviewLightbox() {
     lightbox.hidden = true;
     lightbox.setAttribute('role', 'dialog');
     lightbox.setAttribute('aria-modal', 'true');
-    lightbox.setAttribute('aria-label', 'Project preview image');
+    lightbox.setAttribute('aria-label', copy.projectPreviewImage);
     lightbox.innerHTML = `
-      <button class="preview-lightbox__close" type="button" aria-label="Close preview">
+      <button class="preview-lightbox__close" type="button" aria-label="${copy.closePreview}">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -1143,7 +1616,7 @@ function initPreviewLightbox() {
         </svg>
       </button>
       <button class="preview-lightbox__nav preview-lightbox__nav--previous" type="button"
-        aria-label="Previous preview">
+        aria-label="${copy.previousPreview}">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -1155,7 +1628,7 @@ function initPreviewLightbox() {
         <figcaption class="preview-lightbox__caption"></figcaption>
       </figure>
       <button class="preview-lightbox__nav preview-lightbox__nav--next" type="button"
-        aria-label="Next preview">
+        aria-label="${copy.nextPreview}">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -1178,7 +1651,7 @@ function initPreviewLightbox() {
     previewLightboxState.currentImage = (index + previewLightboxState.activeImages.length)
       % previewLightboxState.activeImages.length;
     const selectedImage = previewLightboxState.activeImages[previewLightboxState.currentImage];
-    const altText = selectedImage.getAttribute('alt') || 'Project preview image';
+    const altText = selectedImage.getAttribute('alt') || copy.projectPreviewImage;
     const hasMultipleImages = previewLightboxState.activeImages.length > 1;
 
     image.src = selectedImage.currentSrc || selectedImage.src;
@@ -1260,14 +1733,14 @@ function initPreviewLightbox() {
         return;
       }
 
-      const altText = galleryImage.getAttribute('alt') || 'project preview image';
+      const altText = galleryImage.getAttribute('alt') || copy.projectPreviewImage.toLowerCase();
       const isInactiveSlideshowImage = gallery.classList.contains('is-slideshow')
         && !galleryImage.classList.contains('is-active');
 
       galleryImage.dataset.lightboxReady = 'true';
       galleryImage.tabIndex = isInactiveSlideshowImage ? -1 : 0;
       galleryImage.setAttribute('role', 'button');
-      galleryImage.setAttribute('aria-label', `Open ${altText} full view`);
+      galleryImage.setAttribute('aria-label', copy.openFullView(altText));
 
       const openCurrentImage = () => {
         const currentImages = Array.from(gallery.querySelectorAll('img'));
@@ -1303,7 +1776,7 @@ function initFeatureModal() {
     modal.setAttribute('aria-labelledby', 'feature-modal-title');
     modal.innerHTML = `
       <div class="feature-modal__panel">
-        <button class="feature-modal__close" type="button" aria-label="Close feature view">
+        <button class="feature-modal__close" type="button" aria-label="${copy.closeFeatureView}">
           <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -1312,28 +1785,28 @@ function initFeatureModal() {
           </svg>
         </button>
         <div class="feature-modal__body">
-          <section class="feature-modal__summary" aria-label="Project feature summary">
-            <p class="feature-modal__eyebrow">Screenshot preview</p>
+          <section class="feature-modal__summary" aria-label="${copy.projectFeatureSummary}">
+            <p class="feature-modal__eyebrow">${copy.screenshotPreview}</p>
             <h2 id="feature-modal-title"></h2>
             <p class="feature-modal__description"></p>
             <div class="feature-modal__features"></div>
           </section>
-          <section class="feature-modal__gallery" aria-label="Project screenshots">
+          <section class="feature-modal__gallery" aria-label="${copy.screenshots}">
             <figure class="feature-modal__active-preview">
               <div class="feature-modal__image-shell">
                 <button class="feature-modal__step feature-modal__step--previous" type="button"
-                  aria-label="Previous feature screenshot">
+                  aria-label="${copy.previousFeatureScreenshot}">
                   <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="m15 18-6-6 6-6" />
                   </svg>
                 </button>
-                <button class="feature-modal__image-button" type="button" aria-label="Open selected screenshot full view">
+                <button class="feature-modal__image-button" type="button" aria-label="${copy.openSelectedScreenshot}">
                   <img class="feature-modal__active-image" alt="" />
                 </button>
                 <button class="feature-modal__step feature-modal__step--next" type="button"
-                  aria-label="Next feature screenshot">
+                  aria-label="${copy.nextFeatureScreenshot}">
                   <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -1343,8 +1816,8 @@ function initFeatureModal() {
               </div>
               <figcaption class="feature-modal__caption"></figcaption>
             </figure>
-            <div class="feature-modal__filters" aria-label="Filter screenshots"></div>
-            <div class="feature-modal__thumbs" aria-label="Screenshot thumbnails"></div>
+            <div class="feature-modal__filters" aria-label="${copy.filterScreenshots}"></div>
+            <div class="feature-modal__thumbs" aria-label="${copy.screenshotThumbnails}"></div>
           </section>
         </div>
       </div>
@@ -1488,7 +1961,7 @@ function initFeatureModal() {
       button.type = 'button';
       button.dataset.group = group;
       button.setAttribute('aria-pressed', String(group === featureModalState.activeGroup));
-      button.textContent = group;
+      button.textContent = getFeatureGroupLabel(group);
       button.addEventListener('click', () => setFeatureGroup(group));
       filters.append(button);
     });
@@ -1503,7 +1976,7 @@ function initFeatureModal() {
       button.type = 'button';
       button.dataset.group = group;
       button.dataset.imageIndex = String(imageIndex);
-      button.setAttribute('aria-label', `Show ${alt}`);
+      button.setAttribute('aria-label', copy.showImage(alt));
       image.src = src;
       image.alt = alt;
       image.loading = 'lazy';

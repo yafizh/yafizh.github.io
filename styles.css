@@ -123,6 +123,38 @@ video {
   color: var(--text);
 }
 
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-alt);
+}
+
+.language-switch a {
+  min-width: 34px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.language-switch a:hover {
+  color: var(--text);
+}
+
+.language-switch a.is-active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -1129,6 +1161,10 @@ body.is-feature-modal-open {
   .site-nav a {
     font-size: 0.88rem;
     flex: 0 0 auto;
+  }
+
+  .language-switch {
+    margin-left: 0;
   }
 
   .projects__grid--featured {
