@@ -2075,3 +2075,84 @@ initFeatureModal();
 window.initPreviewGalleries = initPreviewGalleries;
 window.initPreviewLightbox = initPreviewLightbox;
 window.initFeatureModal = initFeatureModal;
+
+function initVibeEmbeds() {
+  const frames = Array.from(document.querySelectorAll('[data-vibe-embed]'));
+
+  if (!frames.length) {
+    return;
+  }
+
+  const setScale = (frame) => {
+    const width = frame.clientWidth;
+
+    if (width) {
+      frame.style.setProperty('--vibe-scale', String(width / 1280));
+    }
+  };
+
+  const scaleAll = () => frames.forEach(setScale);
+
+  scaleAll();
+  window.addEventListener('resize', scaleAll);
+
+  // Reduced motion (or no observer support) keeps the placeholder and just links out,
+  // so five animation loops never start.
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    frames.forEach((frame) => {
+      const placeholder = frame.querySelector('.vibe-card__placeholder');
+
+      if (placeholder) {
+        placeholder.textContent = 'Open demo';
+      }
+    });
+
+    return;
+  }
+
+  const mount = (frame) => {
+    if (frame.querySelector('iframe')) {
+      return;
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.src = frame.dataset.vibeEmbed;
+    iframe.title = frame.dataset.vibeTitle || '';
+    iframe.loading = 'lazy';
+    iframe.setAttribute('scrolling', 'no');
+    iframe.setAttribute('tabindex', '-1');
+    iframe.setAttribute('aria-hidden', 'true');
+    iframe.addEventListener('load', () => frame.classList.add('is-live'));
+
+    setScale(frame);
+    frame.insertBefore(iframe, frame.firstChild);
+  };
+
+  // Unmounting off-screen demos stops their canvas loops from burning CPU.
+  const unmount = (frame) => {
+    const iframe = frame.querySelector('iframe');
+
+    if (!iframe) {
+      return;
+    }
+
+    iframe.remove();
+    frame.classList.remove('is-live');
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        mount(entry.target);
+        return;
+      }
+
+      unmount(entry.target);
+    });
+  }, { rootMargin: '250px 0px' });
+
+  frames.forEach((frame) => observer.observe(frame));
+}
+
+initVibeEmbeds();
+window.initVibeEmbeds = initVibeEmbeds;

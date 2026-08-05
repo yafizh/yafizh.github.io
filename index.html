@@ -28,7 +28,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260629-1" />
+  <link rel="stylesheet" href="styles.css?v=20260805-1" />
 </head>
 
 <body>
@@ -44,6 +44,7 @@
         <a href="#work">Work</a>
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
+        <a href="#vibe">Vibe</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="language-switch" aria-label="Language selector">
@@ -586,6 +587,96 @@
       </div>
     </section>
 
+    <section class="vibe" id="vibe" data-animate>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Vibe Coding</p>
+          <h2>Creative Experiments</h2>
+          <p>Small browser toys I build to explore motion, sound, and interaction — sketched fast, then tuned by hand.
+            Each card below runs the real thing.</p>
+        </div>
+        <div class="vibe__grid">
+          <article class="project-card vibe-card">
+            <a class="vibe-card__frame" href="https://yafizh.github.io/vibe-audio-visualizer/" target="_blank"
+              rel="noopener noreferrer" aria-label="Open Pulse audio visualizer demo"
+              data-vibe-embed="https://yafizh.github.io/vibe-audio-visualizer/"
+              data-vibe-title="Pulse audio visualizer live preview">
+              <span class="vibe-card__placeholder">Live preview</span>
+              <span class="project-card__media-overlay" aria-hidden="true">Open demo</span>
+            </a>
+            <h3>Pulse — Audio Visualizer</h3>
+            <p>Real-time visualizer that turns microphone input or an uploaded track into animated spectrum art, with
+              switchable render modes, sensitivity control, and color themes.</p>
+            <ul class="vibe-tags" aria-label="Pulse technology stack">
+              <li>Web Audio API</li>
+              <li>Canvas</li>
+            </ul>
+          </article>
+          <article class="project-card vibe-card">
+            <a class="vibe-card__frame" href="https://yafizh.github.io/vibe-particle-field/" target="_blank"
+              rel="noopener noreferrer" aria-label="Open Particle Field demo"
+              data-vibe-embed="https://yafizh.github.io/vibe-particle-field/"
+              data-vibe-title="Particle Field live preview">
+              <span class="vibe-card__placeholder">Live preview</span>
+              <span class="project-card__media-overlay" aria-hidden="true">Open demo</span>
+            </a>
+            <h3>Particle Field</h3>
+            <p>Interactive particle text where thousands of dots scatter from the cursor and drift back into formation.
+              Density, repel radius, return speed, dot size, and attract mode are all tunable.</p>
+            <ul class="vibe-tags" aria-label="Particle Field technology stack">
+              <li>Canvas</li>
+            </ul>
+          </article>
+          <article class="project-card vibe-card">
+            <a class="vibe-card__frame" href="https://yafizh.github.io/vibe-physics-playground/" target="_blank"
+              rel="noopener noreferrer" aria-label="Open Physics Playground demo"
+              data-vibe-embed="https://yafizh.github.io/vibe-physics-playground/"
+              data-vibe-title="Physics Playground live preview">
+              <span class="vibe-card__placeholder">Live preview</span>
+              <span class="project-card__media-overlay" aria-hidden="true">Open demo</span>
+            </a>
+            <h3>Physics Playground</h3>
+            <p>Rigid-body sandbox where you rain shapes into the canvas, then drag and fling them under adjustable
+              gravity — with neon, pastel, and mono themes plus optional collision sound.</p>
+            <ul class="vibe-tags" aria-label="Physics Playground technology stack">
+              <li>Matter.js</li>
+              <li>Canvas</li>
+            </ul>
+          </article>
+          <article class="project-card vibe-card">
+            <a class="vibe-card__frame" href="https://yafizh.github.io/vibe-pip-buddy/" target="_blank"
+              rel="noopener noreferrer" aria-label="Open Pip demo"
+              data-vibe-embed="https://yafizh.github.io/vibe-pip-buddy/" data-vibe-title="Pip live preview">
+              <span class="vibe-card__placeholder">Live preview</span>
+              <span class="project-card__media-overlay" aria-hidden="true">Open demo</span>
+            </a>
+            <h3>Pip — say hi</h3>
+            <p>A tiny vector character that follows your cursor and reacts to clicks — a study in giving a handful of
+              SVG shapes a convincing sense of personality.</p>
+            <ul class="vibe-tags" aria-label="Pip technology stack">
+              <li>SVG</li>
+            </ul>
+          </article>
+          <article class="project-card vibe-card">
+            <a class="vibe-card__frame" href="https://yafizh.github.io/vibe-kyoto-gallery/" target="_blank"
+              rel="noopener noreferrer" aria-label="Open A Day in Kyoto demo"
+              data-vibe-embed="https://yafizh.github.io/vibe-kyoto-gallery/"
+              data-vibe-title="A Day in Kyoto live preview">
+              <span class="vibe-card__placeholder">Live preview</span>
+              <span class="project-card__media-overlay" aria-hidden="true">Open demo</span>
+            </a>
+            <h3>A Day in Kyoto</h3>
+            <p>Scroll-driven visual narrative following one day across six Kyoto locations, from a 05:30 shrine climb to
+              the riverside at night, with cinematic transitions between chapters.</p>
+            <ul class="vibe-tags" aria-label="A Day in Kyoto technology stack">
+              <li>GSAP ScrollTrigger</li>
+              <li>CSS Animation</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="contact" id="contact" data-animate>
       <div class="container contact__card">
         <div>
@@ -610,7 +701,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260629-1" defer></script>
+  <script src="script.js?v=20260805-1" defer></script>
 </body>
 
 </html>
