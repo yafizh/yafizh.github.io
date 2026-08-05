@@ -4,45 +4,45 @@ Screenshots are captured at 1280x720 from the local app on `http://localhost:800
 
 ## Admin
 
-- `admin-01-dashboard.png` - dashboard
-- `admin-02-employees.png` - employee management
-- `admin-03-users.png` - user management
-- `admin-04-asset-types.png` - asset type list
-- `admin-05-asset-categories.png` - asset category list
-- `admin-06-assets-list.png` - asset list
-- `admin-07-asset-detail.png` - asset detail
-- `admin-08-asset-additions.png` - asset additions
-- `admin-09-damaged-assets.png` - damaged assets
-- `admin-10-lost-assets.png` - lost assets
-- `admin-11-maintenance-summary.png` - maintenance summary
-- `admin-12-maintenance-active.png` - active maintenance assets
-- `admin-13-maintenance-finished.png` - finished maintenance assets
-- `admin-14-borrow-requests.png` - borrowing requests
-- `admin-15-borrow-request-detail.png` - borrowing request detail
-- `admin-16-return-requests.png` - return requests
-- `admin-17-return-request-detail.png` - return request detail
-- `admin-18-report-assets.png` - asset report
-- `admin-19-report-asset-additions.png` - asset additions report
-- `admin-20-report-damaged-assets.png` - damaged assets report
-- `admin-21-report-lost-assets.png` - lost assets report
-- `admin-22-report-maintenance.png` - maintenance report
-- `admin-23-report-borrowing.png` - borrowing report
-- `admin-24-report-returns.png` - returns report
-- `admin-25-report-borrowing-chart.png` - borrowing chart report
-- `admin-27-report-asset-condition.png` - asset condition report
-- `admin-28-report-employees.png` - employee report
+- `admin-01-dashboard.webp` - dashboard
+- `admin-02-employees.webp` - employee management
+- `admin-03-users.webp` - user management
+- `admin-04-asset-types.webp` - asset type list
+- `admin-05-asset-categories.webp` - asset category list
+- `admin-06-assets-list.webp` - asset list
+- `admin-07-asset-detail.webp` - asset detail
+- `admin-08-asset-additions.webp` - asset additions
+- `admin-09-damaged-assets.webp` - damaged assets
+- `admin-10-lost-assets.webp` - lost assets
+- `admin-11-maintenance-summary.webp` - maintenance summary
+- `admin-12-maintenance-active.webp` - active maintenance assets
+- `admin-13-maintenance-finished.webp` - finished maintenance assets
+- `admin-14-borrow-requests.webp` - borrowing requests
+- `admin-15-borrow-request-detail.webp` - borrowing request detail
+- `admin-16-return-requests.webp` - return requests
+- `admin-17-return-request-detail.webp` - return request detail
+- `admin-18-report-assets.webp` - asset report
+- `admin-19-report-asset-additions.webp` - asset additions report
+- `admin-20-report-damaged-assets.webp` - damaged assets report
+- `admin-21-report-lost-assets.webp` - lost assets report
+- `admin-22-report-maintenance.webp` - maintenance report
+- `admin-23-report-borrowing.webp` - borrowing report
+- `admin-24-report-returns.webp` - returns report
+- `admin-25-report-borrowing-chart.webp` - borrowing chart report
+- `admin-27-report-asset-condition.webp` - asset condition report
+- `admin-28-report-employees.webp` - employee report
 
 ## Employee
 
-- `employee-01-asset-types.png` - asset type browser
-- `employee-02-asset-categories.png` - asset category browser
-- `employee-03-available-assets.png` - available assets
-- `employee-04-borrow-request-form.png` - borrowing request form
-- `employee-05-borrow-history.png` - borrowing history
-- `employee-06-borrow-detail.png` - borrowing detail
-- `employee-07-return-request-form.png` - return request form
-- `employee-08-return-history.png` - return history
-- `employee-09-return-detail.png` - return detail
+- `employee-01-asset-types.webp` - asset type browser
+- `employee-02-asset-categories.webp` - asset category browser
+- `employee-03-available-assets.webp` - available assets
+- `employee-04-borrow-request-form.webp` - borrowing request form
+- `employee-05-borrow-history.webp` - borrowing history
+- `employee-06-borrow-detail.webp` - borrowing detail
+- `employee-07-return-request-form.webp` - return request form
+- `employee-08-return-history.webp` - return history
+- `employee-09-return-detail.webp` - return detail
 
 ## Notes
 
