@@ -1006,6 +1006,8 @@ const uiCopy = {
     screenshotThumbnails: 'Screenshot thumbnails',
     screenshots: 'Project screenshots',
     showImage: (altText) => `Show ${altText}`,
+    switchToDark: 'Switch to dark theme',
+    switchToLight: 'Switch to light theme',
   },
   id: {
     closeFeatureView: 'Tutup tampilan fitur',
@@ -1023,6 +1025,8 @@ const uiCopy = {
     screenshotThumbnails: 'Thumbnail screenshot',
     screenshots: 'Screenshot proyek',
     showImage: (altText) => `Tampilkan ${altText}`,
+    switchToDark: 'Ganti ke tema gelap',
+    switchToLight: 'Ganti ke tema terang',
   },
 };
 
@@ -2156,3 +2160,70 @@ function initVibeEmbeds() {
 
 initVibeEmbeds();
 window.initVibeEmbeds = initVibeEmbeds;
+
+// Matches the --bg token of each theme so the mobile browser chrome follows along.
+const themeColors = {
+  light: '#f8fafc',
+  dark: '#0b1120',
+};
+
+const readStoredTheme = () => {
+  try {
+    const stored = localStorage.getItem('theme');
+
+    return stored === 'light' || stored === 'dark' ? stored : null;
+  } catch (error) {
+    return null;
+  }
+};
+
+function initThemeToggle() {
+  const toggle = document.querySelector('[data-theme-toggle]');
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', themeColors[theme]);
+    }
+
+    if (toggle) {
+      toggle.setAttribute('aria-label', theme === 'dark' ? copy.switchToLight : copy.switchToDark);
+    }
+  };
+
+  // The inline head script already set the attribute pre-paint; this syncs the label and meta colour.
+  applyTheme(readStoredTheme() || (systemDark.matches ? 'dark' : 'light'));
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+
+      try {
+        localStorage.setItem('theme', next);
+      } catch (error) {
+        // A blocked storage still switches the theme for this visit.
+      }
+
+      applyTheme(next);
+    });
+  }
+
+  // Keep following the OS until the visitor picks a theme by hand.
+  const handleSystemChange = (event) => {
+    if (!readStoredTheme()) {
+      applyTheme(event.matches ? 'dark' : 'light');
+    }
+  };
+
+  if (typeof systemDark.addEventListener === 'function') {
+    systemDark.addEventListener('change', handleSystemChange);
+  } else if (typeof systemDark.addListener === 'function') {
+    systemDark.addListener(handleSystemChange);
+  }
+}
+
+initThemeToggle();
+window.initThemeToggle = initThemeToggle;
